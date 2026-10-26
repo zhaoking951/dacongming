@@ -88,7 +88,8 @@ function buildVlessClashProxy(n) {
     p.servername = getRealitySni(n.sni);
     p['reality-opts'] = {
       'public-key': n.reality_public_key,
-      'short-id': n.reality_short_id || ''
+      'short-id': n.reality_short_id || '',
+      'support-x25519mlkem768': true
     };
     p['client-fingerprint'] = 'chrome';
     p.flow = 'xtls-rprx-vision';
