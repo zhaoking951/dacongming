@@ -161,15 +161,8 @@ app.use(notFoundHandler);
 app.use(errorHandler);
 
 // 定时轮换任务（默认每天凌晨 3 点）
-cron.schedule('0 3 * * *', async () => {
-  logger.info('[CRON] 开始自动轮换...');
-  try {
-    await rotateService.rotateAll();
-    logger.info('[CRON] 轮换完成');
-  } catch (err) {
-    logger.error({ err }, '[CRON] 轮换失败');
-  }
-}, { timezone: 'Asia/Shanghai' });
+// Daily 03:00 auto-rotation disabled by owner request; manual rotation unchanged.
+logger.info('[CRON] Daily 03:00 auto-rotation disabled');
 
 // 每天凌晨 4 点自动冻结不活跃/到期用户（受开关控制）
 cron.schedule('0 4 * * *', async () => {
